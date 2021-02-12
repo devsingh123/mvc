@@ -118,6 +118,7 @@ console.log(1 + 2); //3
 console.log(1 + 2 === 3); //true
 ------------------------------------------------------
 Palindrome is a word, phrase, number, or other sequence of characters which reads the same backward or forward.
+Palindrome is a word, phrase, number, or other sequence of characters which reads the same backward or forward.
 
 
 
