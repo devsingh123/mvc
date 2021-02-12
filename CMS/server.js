@@ -22,12 +22,12 @@ app.use(methodOverride("_method"))
 // include router
 const biodataRouter = require("./routes/biodataRouter")
 const userRouter = require("./routes/userRouter")
-//const pageRouter = require("./routes/pageRouter")
+const articleRouter = require("./routes/articleRouter")
 
 // routing
 app.use("/biodata", biodataRouter)
 app.use("/user", userRouter)
-//app.use("/page", pageRouter)
+app.use("/article", articleRouter)
 
 // starting server
 app.listen(3001, function() {

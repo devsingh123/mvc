@@ -14,8 +14,8 @@ module.exports = {
 	},
 
 	/* User Login Model */
-	check: function(con, data, callback) {        
-		con.query(`SELECT COUNT(*) AS userCount, user_password FROM cms_users WHERE user_email = '` + data.email + `' LIMIT 1;`, function (err, result, fields) {
+	check: function(con, data, callback) {          
+		con.query(`SELECT COUNT(*) AS userCount, u.user_password, ut.role_name FROM cms_users u LEFT JOIN user_type ut ON u.role_id = ut.role_id WHERE u.user_email = '` + data.email + `' AND u.role_id = '` + data.role_id + `' LIMIT 1;`, function (err, result, fields) {
 			if (err) 
 				callback(err,null);
             else
@@ -23,7 +23,7 @@ module.exports = {
 					callback(err,null);
 				} else {
 					if (bcrypt.compareSync(data.password, result[0].user_password)) {
-						callback(null,result[0].userCount);
+						callback(null,result[0].role_name);
 					} else {
 						callback(err,null);
 					}	
